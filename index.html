@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Макет страницы на Bootstrap</title>
+    <!-- Подключаем Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-custom {
+            background-color: #3D5092 !important; /* Задаем цвет #3D5092 */
+        }
+
+        .nav-link-text {
+            color: #F8F8F8 !important; /* Золотой цвет */
+            font-family: 'Open Sans', sans-serif; /* Шрифт */
+            /*font-size: 1em; !* Размер шрифта *!*/
+        }
+
+        .svg-background {
+            background-image: url(svg/graph.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 110% /* Высота блока */
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- Навигационная панель -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container-fluid p-1 px-5">
+        <a class="navbar-brand" href="#">
+            <img src="svg/logo.svg" alt="logo"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="container-fluid text-center">
+            <div class="row collapse navbar-collapse ">
+                <div class="col nav-item">
+                    <a class="nav-link nav-link-text active" aria-current="page" href="#">Услуги по логистике</a>
+                </div>
+                <div class="col nav-item">
+                    <a class="nav-link nav-link-text" aria-current="page" href="#">IT-Услуги</a>
+                </div>
+                <div class="col nav-item">
+                    <a class="nav-link nav-link-text" aria-current="page" href="#">О компании</a>
+                </div>
+                <div class="col nav-item">
+                    <a class="nav-link nav-link-text" aria-current="page" href="#">Контакты</a>
+                </div>
+                <div class="d-grid gap-2 col nav-item">
+                    <div class="btn btn-light justify-content-center d-flex align-items-center">
+                        <span style="color: #3D5092">Заказать услуги</span>
+                        <img src="svg/arrow.svg" alt="arrow"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid svg-background" style="background-color:#3D5092">
+    <div class="collapse pt-4 " id="navbarNav">
+        <div class="container">
+            <div class="row px-4 ">
+                <div class="col-6 me-auto">
+                    <a class="nav-link nav-link-text" aria-current="page" href="#">Услуги по логистике</a>
+                    <hr class="nav-link-text">
+                </div>
+                <div class="col-auto">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_104_1871)">
+                                <path d="M14.1001 14.1009L33.8991 33.8999" stroke="white" stroke-width="2"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14.1001 33.8993L33.8991 14.1003" stroke="white" stroke-width="2"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_104_1871">
+                                    <rect width="48" height="48" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+            <div class="row px-4">
+                <div class="col-6">
+                    <a class="nav-link nav-link-text" aria-current="page" href="#">IT-Услуги</a>
+                    <hr class="nav-link-text">
+                </div>
+            </div>
+            <div class="row px-4">
+                <div class="col-6">
+                    <a class="nav-link nav-link-text" aria-current="page" href="#">О компании</a>
+                    <hr class="nav-link-text">
+                </div>
+            </div>
+            <div class="row px-4">
+                <div class="col-6">
+                    <a class="nav-link nav-link-text" aria-current="page" href="#">Контакты</a>
+                    <hr class="nav-link-text">
+                </div>
+            </div>
+            <div class="row p-4 text-center">
+                <div class="col" style="border: 1px solid #6c7aab">
+                    <a class="nav-link nav-link-text" aria-current="page" href="tel:+375295005887">+375 (29)
+                        500-58-87</a>
+                </div>
+                <div class="col" style="border: 1px solid #6c7aab">
+                    <a class="nav-link nav-link-text" aria-current="page"
+                       href="mailto:info@bysend.com">info@bysend.com</a>
+                </div>
+            </div>
+            <div class="row px-4 pb-4 text-center">
+                <div class="col" style="border: 1px solid #6c7aab">
+                    <a class="nav-link nav-link-text" aria-current="page" href="#">Instagram</a>
+                </div>
+                <div class="col" style="border: 1px solid #6c7aab">
+                    <a class="nav-link nav-link-text" aria-current="page" href="#">Telegram</a>
+                </div>
+                <div class="col" style="border: 1px solid #6c7aab">
+                    <a class="nav-link nav-link-text" aria-current="page" href="#">TikTok</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Основной контент -->
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Добро пожаловать на мой сайт!</h1>
+            <p>Это пример страницы, созданной с использованием Bootstrap. Здесь может быть ваш контент.</p>
+        </div>m
+    </div>
+</div>
+
+<!-- Футер -->
+<footer class="navbar-custom">
+    <div class="container">
+        <div class="row pt-2 pb-2">
+            <div class="col">
+                <img src="svg/logo.svg" alt="logo">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Подключаем Bootstrap JS и зависимости -->
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
