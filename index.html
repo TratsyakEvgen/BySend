@@ -3,25 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Макет страницы на Bootstrap</title>
+    <meta name="description"
+          content="Профессиональный кузовной ремонт с применением стапеля в Гродно. Точное восстановление геометрии кузова после аварий. Гарантия качества, доступные цены. Запишитесь онлайн!">
+    <meta name="keywords"
+          content="кузовной ремонт стапелем Гродно, восстановление геометрии кузова, рихтовка авто после ДТП, автосервис с каролинером Гродно">
+    <title>Кузовной ремонт с использованием стапеля в Гродно | Восстановление геометрии авто</title>
     <!-- Подключаем Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Rubik Burned' rel='stylesheet'>
     <style>
         .navbar-custom {
-            background-color: #3D5092 !important; /* Задаем цвет #3D5092 */
+            background-color: #9A9A9A !important;
+
         }
 
         .nav-link-text {
-            color: #F8F8F8 !important; /* Золотой цвет */
-            font-family: 'Open Sans', sans-serif; /* Шрифт */
-            /*font-size: 1em; !* Размер шрифта *!*/
+            color: #F8F8F8 !important;
+            font-family: 'Rubik Burned', serif;
+            font-size: 22px;
+        }
+
+        .h-text {
+            color: #9A9A9A;
+            font-family: 'Rubik Burned', serif;
+            font-weight: bold;
+        }
+
+        .border-color {
+            border-bottom: 2px solid #9A9A9A;
+
+        }
+
+        .place-background {
+            background-image: url(svg/place.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100%
         }
 
         .svg-background {
             background-image: url(svg/graph.svg);
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 110% /* Высота блока */
+            background-size: 80%
         }
     </style>
 </head>
@@ -30,7 +54,7 @@
 
 <!-- Навигационная панель -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
-    <div class="container-fluid p-1 px-5">
+    <div class="container-fluid ">
         <a class="navbar-brand" href="#">
             <img src="svg/logo.svg" alt="logo"/>
         </a>
@@ -43,22 +67,19 @@
         <div class="container-fluid text-center">
             <div class="row collapse navbar-collapse ">
                 <div class="col nav-item">
-                    <a class="nav-link nav-link-text active" aria-current="page" href="#">Услуги по логистике</a>
+                    <a class="nav-link nav-link-text active" aria-current="page" href="#services">Услуги</a>
                 </div>
                 <div class="col nav-item">
-                    <a class="nav-link nav-link-text" aria-current="page" href="#">IT-Услуги</a>
+                    <a class="nav-link nav-link-text" aria-current="page" href="#about">О компании</a>
                 </div>
                 <div class="col nav-item">
-                    <a class="nav-link nav-link-text" aria-current="page" href="#">О компании</a>
+                    <a class="nav-link nav-link-text" aria-current="page" href="#place">Где мы?</a>
                 </div>
                 <div class="col nav-item">
-                    <a class="nav-link nav-link-text" aria-current="page" href="#">Контакты</a>
+                    <a class="nav-link nav-link-text" aria-current="page" href="tel:+375297890285">Позвонить нам</a>
                 </div>
-                <div class="d-grid gap-2 col nav-item">
-                    <div class="btn btn-light justify-content-center d-flex align-items-center">
-                        <span style="color: #3D5092">Заказать услуги</span>
-                        <img src="svg/arrow.svg" alt="arrow"/>
-                    </div>
+                <div class="col nav-item">
+                    <a class="nav-link nav-link-text" aria-current="page" href="#">Узнать цену</a>
                 </div>
             </div>
         </div>
@@ -66,87 +87,168 @@
 </nav>
 
 
-<div class="container-fluid svg-background" style="background-color:#3D5092">
-    <div class="collapse pt-4 " id="navbarNav">
-        <div class="container">
-            <div class="row px-4 ">
-                <div class="col-6 me-auto">
-                    <a class="nav-link nav-link-text" aria-current="page" href="#">Услуги по логистике</a>
-                    <hr class="nav-link-text">
-                </div>
-                <div class="col-auto">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_104_1871)">
-                                <path d="M14.1001 14.1009L33.8991 33.8999" stroke="white" stroke-width="2"
-                                      stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M14.1001 33.8993L33.8991 14.1003" stroke="white" stroke-width="2"
-                                      stroke-linecap="round" stroke-linejoin="round"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_104_1871">
-                                    <rect width="48" height="48" fill="white"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </button>
+<div class="collapse " id="navbarNav">
+    <div class="container-fluid svg-background pt-4" style="background-color:#9A9A9A">
+        <div class="row px-4 ">
+            <div class="col-6 me-auto">
+                <a class="nav-link nav-link-text active" aria-current="page" href="#services">Услуги</a>
+                <hr class="nav-link-text">
+            </div>
+            <div class="col-auto">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_104_1871)">
+                            <path d="M14.1001 14.1009L33.8991 33.8999" stroke="#d1d1d1" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.1001 33.8993L33.8991 14.1003" stroke="#d1d1d1" stroke-width="2"
+                                  stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_104_1871">
+                                <rect width="48" height="48" fill="white"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
 
-                </div>
             </div>
-            <div class="row px-4">
-                <div class="col-6">
-                    <a class="nav-link nav-link-text" aria-current="page" href="#">IT-Услуги</a>
-                    <hr class="nav-link-text">
-                </div>
+        </div>
+        <div class="row px-4">
+            <div class="col-6">
+                <a class="nav-link nav-link-text" aria-current="page" href="#about">О компании</a>
+                <hr class="nav-link-text">
             </div>
-            <div class="row px-4">
-                <div class="col-6">
-                    <a class="nav-link nav-link-text" aria-current="page" href="#">О компании</a>
-                    <hr class="nav-link-text">
-                </div>
+        </div>
+        <div class="row px-4">
+            <div class="col-6">
+                <a class="nav-link nav-link-text" aria-current="page" href="#place">Где мы?</a>
+                <hr class="nav-link-text">
             </div>
-            <div class="row px-4">
-                <div class="col-6">
-                    <a class="nav-link nav-link-text" aria-current="page" href="#">Контакты</a>
-                    <hr class="nav-link-text">
-                </div>
+        </div>
+        <div class="row px-4">
+            <div class="col-6">
+                <a class="nav-link nav-link-text" aria-current="page" href="tel:+375297890285">Позвонить нам</a>
+                <hr class="nav-link-text">
             </div>
-            <div class="row p-4 text-center">
-                <div class="col" style="border: 1px solid #6c7aab">
-                    <a class="nav-link nav-link-text" aria-current="page" href="tel:+375295005887">+375 (29)
-                        500-58-87</a>
-                </div>
-                <div class="col" style="border: 1px solid #6c7aab">
-                    <a class="nav-link nav-link-text" aria-current="page"
-                       href="mailto:info@bysend.com">info@bysend.com</a>
-                </div>
-            </div>
-            <div class="row px-4 pb-4 text-center">
-                <div class="col" style="border: 1px solid #6c7aab">
-                    <a class="nav-link nav-link-text" aria-current="page" href="#">Instagram</a>
-                </div>
-                <div class="col" style="border: 1px solid #6c7aab">
-                    <a class="nav-link nav-link-text" aria-current="page" href="#">Telegram</a>
-                </div>
-                <div class="col" style="border: 1px solid #6c7aab">
-                    <a class="nav-link nav-link-text" aria-current="page" href="#">TikTok</a>
-                </div>
+        </div>
+        <div class="row px-4 ">
+            <div class="col-6 mb-4">
+                <a class="nav-link nav-link-text" aria-current="page" href="#">Узнать цену</a>
             </div>
         </div>
     </div>
 </div>
 
-
-<!-- Основной контент -->
-<div class="container-fluid mt-4">
-    <div class="row">
-        <div class="col-md-8">
-            <h1>Добро пожаловать на мой сайт!</h1>
-            <p>Это пример страницы, созданной с использованием Bootstrap. Здесь может быть ваш контент.</p>
-        </div>m
+<main class="container">
+    <div class="col border-color">
+        <h1 class="h-text">Кузовной ремонт с точным восстановлением геометрии в Гродно</h1>
+        <p>Необходим ремонт кузова после ДТП? Наш автосервис в Гродно специализируется на восстановлении автомобилей с
+            использованием профессионального стапеля (каролинера). Мы гарантируем качество и точность работ.</p>
     </div>
-</div>
+
+    <div class="col pt-4 border-color" id="services">
+        <h2 class="h-text">Наши услуги</h2>
+        <ul>
+            <li>Вытяжка кузова на стапеле после аварий и переворотов</li>
+            <li>Устранение перекоса дверей, капота, багажника</li>
+            <li>Ремонт порогов, лонжеронов, стоек</li>
+            <li>Замена поврежденных элементов кузова</li>
+        </ul>
+    </div>
+
+    <!-- Раздел "Для кого?" -->
+    <div class="col pt-4 border-color">
+        <div class="row">
+            <div class="col-md-7 ">
+                <h3 class="h-text">Для кого наши услуги?</h3>
+                <p>Наши услуги подойдут, если:</p>
+                <ul>
+                    <li>Авто побывало в ДТП и потеряло устойчивость на дороге;</li>
+                    <li>Появился скрип дверей или проблемы с закрыванием окон;</li>
+                    <li>Нужно восстановить геометрию для безопасной эксплуатации.</li>
+                </ul>
+            </div>
+            <div class="col-md-5 text-center">
+                <img src="svg/car-crash.png" alt="" width=100% style="position:page; filter: grayscale(100%);">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Раздел "О компании" -->
+    <div class="col pt-4 border-color" id="about">
+        <div class="row">
+            <div class="col-md-5 text-center">
+                <img src="svg/logo-dark.svg" alt="" width=100% style="position:page; filter: grayscale(100%);">
+            </div>
+            <div class="col-md-7 ">
+                <h2 class="h-text">О компании</h2>
+                <p>«Автосервис [Название]» — специалисты по кузовному ремонту в Гродно с 2015 года.</p>
+                <ul>
+                    <li>500+ восстановленных автомобилей;</li>
+                    <li>Собственная покрасочная камера;</li>
+                    <li>Работаем с официальными дилерами и страховыми компаниями.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col pt-4 border-color">
+        <div class="row">
+            <div class="col-md-7 ">
+                <h2 class="h-text">Почему мы?</h2>
+                <ul>
+                    <li><strong>Современный стапель:</strong> Используем оборудование для 3D-коррекции, чтобы
+                        вернуть
+                        кузову
+                        заводские параметры.
+                    </li>
+                    <li><strong>Опытные мастера:</strong> Специалисты с 10+ лет стажа работают с любыми
+                        повреждениями:
+                        от вмятин
+                        до
+                        сложных деформаций.
+                    </li>
+                    <li><strong>Скорость и гарантия:</strong> Минимальные сроки ремонта + официальная гарантия на
+                        все
+                        работы.
+                    </li>
+                    <li><strong>Прозрачная смета:</strong> Никаких скрытых платежей — стоимость согласуем до начала
+                        работ.
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-5 text-center">
+                <img src="svg/why.webp" alt="" width=100% style="position:page; filter: grayscale(100%);">
+            </div>
+        </div>
+    </div>
+
+    <div class="col pt-4 border-color" id="place">
+        <div class="row">
+            <div class="col-5 place-background">
+                <h2 class="h-text">Мы находимся</h2>
+                <p>Адрес: <strong>Гродно, [улица, дом]</strong></p>
+                <p>Работаем ежедневно с 9:00 до 19:00.</p>
+            </div>
+            <div class="col-7 text-center">
+                <div style="position:relative;overflow:hidden;">
+                    <iframe src="https://yandex.by/map-widget/v1/?ll=23.795489%2C53.651369&mode=whatshere&utm_source=share&whatshere%5Bpoint%5D=23.794321%2C53.650698&whatshere%5Bzoom%5D=17.58&z=17"
+                            width=100% height="400" style="position:page; filter: grayscale(100%);"></iframe>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col p-4 ">
+        <h2 class="h-text">Свяжитесь с нами</h2>
+        <p>📞 Звоните прямо сейчас: <strong>+375 (XX) XXX-XX-XX</strong></p>
+        <p>Или оставьте заявку:</p>
+        <a href="tel:+375XXXXXXXXX" class="cta-button">Записаться на ремонт</a>
+    </div>
+</main>
 
 <!-- Футер -->
 <footer class="navbar-custom">
