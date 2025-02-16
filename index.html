@@ -430,7 +430,7 @@
         files.forEach((file, index) => {
             const reader = new FileReader();
             const previewItem = document.createElement('div');
-            previewItem.className = 'col-3 p-1 position-relative';
+            previewItem.className = 'col-lg-3 col-md-6 p-1 position-relative';
             previewItem.style.filter = 'grayscale(100%)';
             const loader = document.createElement('div');
             loader.className = 'loader'
@@ -453,7 +453,8 @@
                 previewItem.removeChild(loader)
                 previewItem.appendChild(media);
                 previewItem.appendChild(removeBtn);
-                const title = document.createElement('a');
+                const title = document.createElement('p');
+                title.className = 'text-break'
                 title.innerHTML = file.name;
                 previewItem.appendChild(title)
             };
