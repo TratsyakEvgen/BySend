@@ -38,7 +38,7 @@
         .nav-link-text {
             color: #f8f8f8 !important;
             font-family: 'Rubik Burned', serif;
-            font-size: 22px
+            font-size: 18px
         }
 
         .button-color {
@@ -66,11 +66,11 @@
             background-image: url(images/slipway.svg);
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 80%
+            background-size: 80%;
         }
 
         .logo-max {
-            max-width: 200px;
+            max-width: 180px;
             height: auto
         }
 
@@ -79,13 +79,46 @@
             height: auto
         }
 
+        .progress-bar-color {
+            background-color: #4f4e4e;
+        }
 
+        .remove-btn {
+            background: none;
+            font-size: 36px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #4f4e4e;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .form-control:focus {
+            border-color: #4f4e4e;
+            box-shadow: inset 0 1px 1px #4f4e4e, 0 0 8px #4f4e4e;
+        }
     </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark navbar-background">
+<nav class="navbar navbar-expand-md navbar-dark navbar-background">
     <div class="container-fluid ">
         <a class="navbar-brand" href="#">
             <img src="images/logo.webp" alt="logo" class="img-fluid logo-max" width="700" height="125"/>
@@ -122,27 +155,27 @@
 <div class="collapse " id="navbarNav">
     <div class="container-fluid slipway-background pt-4" style="background-color:#4F4E4E">
         <div class="row px-4 ">
-            <div class="col-md-6 col-sm-8">
+            <div class="col-md-6 col-sm-8 pb-3">
                 <a class="nav-link nav-link-text active" aria-current="page" href="#services">Услуги</a>
-                <hr class="nav-link-text">
+                <!-- <hr class="nav-link-text"> !-->
             </div>
         </div>
         <div class="row px-4">
-            <div class="col-md-6 col-sm-8">
+            <div class="col-md-6 col-sm-8 pb-3">
                 <a class="nav-link nav-link-text" aria-current="page" href="#about">О компании</a>
-                <hr class="nav-link-text">
+                <!-- <hr class="nav-link-text"> !-->
             </div>
         </div>
         <div class="row px-4">
-            <div class="col-md-6 col-sm-8">
+            <div class="col-md-6 col-sm-8 pb-3">
                 <a class="nav-link nav-link-text" aria-current="page" href="#place">Где мы?</a>
-                <hr class="nav-link-text">
+                <!-- <hr class="nav-link-text"> !-->
             </div>
         </div>
         <div class="row px-4">
-            <div class="col-md-6 col-sm-8">
+            <div class="col-md-6 col-sm-8 pb-3">
                 <a class="nav-link nav-link-text" aria-current="page" href="tel:+375297890285">Позвонить нам</a>
-                <hr class="nav-link-text">
+                <!-- <hr class="nav-link-text"> !-->
             </div>
         </div>
         <div class="row px-4 ">
@@ -156,7 +189,7 @@
 <main class="container">
     <div class="col border-color">
         <h1 class="h-text">Кузовной ремонт с точным восстановлением геометрии в Гродно</h1>
-        <p>tre Необходим ремонт кузова после ДТП? Наш автосервис в Гродно специализируется на восстановлении
+        <p>Необходим ремонт кузова после ДТП? Наш автосервис в Гродно специализируется на восстановлении
             автомобилей с
             использованием профессионального стапеля (каролинера). Мы гарантируем качество и точность работ.
         </p>
@@ -281,25 +314,42 @@
 
     </div>
     <div class="row p-4" id="cost">
-        <h2 class="h-text">Узнать цену</h2>
-        <p>Отправьте фото/видео вашей проблемы и наши специалисты свяжутся с вам в кротчайшее время</p>
-        <form>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Номер для связи</label>
-                <input type="tel" class="form-control" id="exampleFormControlInput1">
+        <div class="row">
+            <div class="col-md-5 text-center">
+                <img src="images/online.webp" alt="" class="img-fluid" width="526" height="600"
+                     style="max-height: 300px; width: auto">
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Описание (необязательно)</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <div class="col-md-7">
+                <h2 class="h-text">Узнать цену</h2>
+                <p>Отправьте фото/видео вашей проблемы и наши специалисты свяжутся с вам в кротчайшее время</p>
+                <form id="myForm">
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Номер телефона</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Краткое описание (необязательно)</label>
+                        <textarea class="form-control" id="message" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <input type="file" id="fileInput" multiple accept="image/*,video/*" hidden>
+                        <button type="button" id="add" class="btn button-color"
+                                onclick="document.getElementById('fileInput').click()">
+                            Добавить файлы
+                        </button>
+                    </div>
+                    <div class="row mb-3" id="filePreview"></div>
+                    <div class="mb-3" id="btnSubmit">
+                        <button class="btn button-color " type="submit">Отправить</button>
+                    </div>
+                </form>
+
+                <div class="progress" role="progressbar"
+                     id="progressContainer" style="display: none">
+                    <div class="progress-bar progress-bar-color" id="progressBar">0%</div>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Файлы</label>
-                <input type="file" class="form-control " name="file" multiple="multiple"/>
-            </div>
-            <div class="mb-3">
-                <button type="submit" class="btn btn-lg button-color">Отправить</button>
-            </div>
-        </form>
+        </div>
     </div>
 </main>
 
@@ -329,9 +379,10 @@
         </div>
         <div class="row pb-1">
             <a class="nav-link copyright-text" aria-current="page" href="#">©
-                <script>document.write(new Date().getFullYear())</script>
+                <script>document.write(new Date().getFullYear().toString())</script>
                 , CrashCar.by</a>
         </div>
+    </div>
 </footer>
 
 <script>
@@ -359,6 +410,118 @@
             document.getElementById('mock_map').remove();
         }
     }
+</script>
+
+<script>
+    const fileInput = document.getElementById('fileInput');
+    const filePreview = document.getElementById('filePreview');
+    let filesArray = [];
+
+    // Обработчик выбора файлов
+    fileInput.addEventListener('change', function () {
+        const files = Array.from(fileInput.files);
+        filesArray = [...filesArray, ...files];
+        fileInput.value = null;
+        updatePreview(files);
+    });
+
+    // Обновление превью файлов
+    function updatePreview(files) {
+        files.forEach((file, index) => {
+            const reader = new FileReader();
+            const previewItem = document.createElement('div');
+            previewItem.className = 'col-3 p-1 position-relative';
+            previewItem.style.filter = 'grayscale(100%)';
+            const loader = document.createElement('div');
+            loader.className = 'loader'
+            previewItem.appendChild(loader)
+            filePreview.appendChild(previewItem);
+
+            reader.onload = function (e) {
+                const media = file.type.startsWith('image')
+                    ? document.createElement('img')
+                    : document.createElement('video');
+                media.className = 'img-fluid'
+                media.src = e.target.result;
+                media.controls = true;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-btn position-absolute top-0 end-0 me-3';
+                removeBtn.innerHTML = 'x';
+                removeBtn.onclick = () => removeFile(index, previewItem);
+
+                previewItem.removeChild(loader)
+                previewItem.appendChild(media);
+                previewItem.appendChild(removeBtn);
+                const title = document.createElement('a');
+                title.innerHTML = file.name;
+                previewItem.appendChild(title)
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    // Удаление файла
+    function removeFile(index, previewItem) {
+        filesArray = filesArray.filter((_, i) => i !== index);
+        previewItem.remove()
+    }
+
+    // Отправка формы
+    document.getElementById('myForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const submit = document.getElementById('btnSubmit');
+        submit.style.display = 'none'
+
+        const formData = new FormData();
+        const progressBar = document.getElementById('progressBar');
+        const progressContainer = document.getElementById('progressContainer');
+
+        formData.append('phone', document.getElementById('phone').value);
+        formData.append('message', document.getElementById('message').value);
+
+        filesArray.forEach((file) => {
+            formData.append(`files`, file);
+        });
+
+        const xhr = new XMLHttpRequest();
+
+        // Показываем прогресс-бар
+        progressContainer.style.display = 'block';
+        progressBar.style.width = '0%';
+        progressBar.textContent = '0%';
+
+        xhr.upload.addEventListener('progress', function (e) {
+            if (e.lengthComputable) {
+                const percent = Math.round((e.loaded / e.total) * 100);
+                progressBar.style.width = percent + '%';
+                progressBar.textContent = percent + '%';
+            }
+        });
+
+        xhr.addEventListener('load', function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                alert('Форма успешно отправлена!');
+                document.getElementById('myForm').reset();
+                filesArray = [];
+                filePreview.innerHTML = '';
+            } else {
+                alert('Ошибка при отправке формы: ' + xhr.statusText);
+            }
+            progressContainer.style.display = 'none';
+            submit.style.display = 'block'
+        });
+
+        xhr.addEventListener('error', function () {
+            alert('Произошла ошибка соединения');
+            progressContainer.style.display = 'none';
+            submit.style.display = 'block'
+        });
+
+        xhr.open('POST', 'http://localhost:8080/orders', true);
+        xhr.send(formData);
+    });
 </script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
