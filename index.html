@@ -10,6 +10,8 @@
     <title>Кузовной ремонт с использованием стапеля в Гродно | Восстановление геометрии авто</title>
     <!-- Подключаем Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js></script>
 
 
     <style>
@@ -42,8 +44,15 @@
         }
 
         .button-color {
-            background-color: #4f4e4e;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
             color: white;
+            background-color: #4f4e4e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .copyright-text {
@@ -83,12 +92,19 @@
             background-color: #4f4e4e;
         }
 
-        .remove-btn {
-            background: none;
-            font-size: 36px;
-            color: white;
-            border: none;
-            cursor: pointer;
+        /* Анимация для плавного исчезновения */
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* Применяем анимацию к alert */
+        .alert.fade-out {
+            animation: fadeOut 0.5s ease forwards; /* Плавное исчезновение за 0.5 секунды */
         }
 
         .loader {
@@ -112,6 +128,22 @@
         .form-control:focus {
             border-color: #4f4e4e;
             box-shadow: inset 0 1px 1px #4f4e4e, 0 0 8px #4f4e4e;
+        }
+
+        .invalid-feedback {
+            color: #4f4e4e; /* Серый цвет, как в Bootstrap для текста */
+        }
+
+
+        /* Переопределяем цвет для is-invalid */
+        .form-control.is-invalid {
+            border-color: #4f4e4e; !important; /* Серый цвет для обводки */
+        }
+
+        /* Переопределяем цвет для фокуса is-invalid */
+        .is-invalid:focus {
+            border-color: #4f4e4e !important; /* Серый цвет для обводки при фокусе */
+            box-shadow: inset 0 1px 1px #4f4e4e, 0 0 8px #4f4e4e !important; /* Серый цвет тени */
         }
     </style>
 </head>
@@ -325,7 +357,8 @@
                 <form id="myForm">
                     <div class="mb-3">
                         <label for="phone" class="form-label">Номер телефона</label>
-                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="+375 (XX) XXX-XX-XX">
+                        <div class="invalid-feedback">Пожалуйста, введите корректный номер телефона Беларуси.</div>
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label">Краткое описание (необязательно)</label>
@@ -333,14 +366,20 @@
                     </div>
                     <div class="mb-3">
                         <input type="file" id="fileInput" multiple accept="image/*,video/*" hidden>
-                        <button type="button" id="add" class="btn button-color"
+                        <button type="button" id="add" class=" button-color"
                                 onclick="document.getElementById('fileInput').click()">
                             Добавить файлы
                         </button>
                     </div>
-                    <div class="row mb-3" id="filePreview"></div>
+                    <div class="container">
+                        <div class="row mb-3" id="filePreview"></div>
+                    </div>
+                    <div id="customAlert" class="alert alert-dismissible fade show d-none" role="alert">
+                        <span id="alert-text"></span>
+                        <button type="button" class="btn-close" onclick="closeBtnAlert()"></button>
+                    </div>
                     <div class="mb-3" id="btnSubmit">
-                        <button class="btn button-color " type="submit">Отправить</button>
+                        <button class="button-color " type="submit">Отправить</button>
                     </div>
                 </form>
 
@@ -348,6 +387,7 @@
                      id="progressContainer" style="display: none">
                     <div class="progress-bar progress-bar-color" id="progressBar">0%</div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -412,7 +452,34 @@
     }
 </script>
 
+
 <script>
+    // Инициализация маски для ввода телефона
+    const phoneInput = document.getElementById('phone');
+    Inputmask({
+        mask: "+375 (99) 999-99-99",
+        placeholder: "+375 (XX) XXX-XX-XX",
+        clearMaskOnLostFocus: false,
+        onincomplete: function() {
+            phoneInput.classList.add('is-invalid'); // Показываем ошибку, если номер неполный
+        },
+        oncomplete: function() {
+            phoneInput.classList.remove('is-invalid'); // Убираем ошибку, если номер полный
+        }
+    }).mask(phoneInput);
+
+    // Валидация формы
+    document.getElementById('myForm').addEventListener('submit', function (e) {
+        if (!phoneInput.inputmask.isComplete()) {
+            e.preventDefault(); // Останавливаем отправку формы
+            phoneInput.classList.add('is-invalid'); // Показываем ошибку
+        } else {
+            phoneInput.classList.remove('is-invalid'); // Убираем ошибку
+            send(e)
+        }
+    });
+
+
     const fileInput = document.getElementById('fileInput');
     const filePreview = document.getElementById('filePreview');
     let filesArray = [];
@@ -446,14 +513,13 @@
                 media.controls = true;
 
                 const removeBtn = document.createElement('button');
-                removeBtn.className = 'remove-btn position-absolute top-0 end-0 me-3';
-                removeBtn.innerHTML = 'x';
+                removeBtn.className = 'btn-close btn-close-white bt position-absolute top-0 end-0 p-3';
                 removeBtn.onclick = () => removeFile(index, previewItem);
 
                 previewItem.removeChild(loader)
                 previewItem.appendChild(media);
                 previewItem.appendChild(removeBtn);
-                const title = document.createElement('p');
+                const title = document.createElement('span');
                 title.className = 'text-break'
                 title.innerHTML = file.name;
                 previewItem.appendChild(title)
@@ -469,7 +535,7 @@
     }
 
     // Отправка формы
-    document.getElementById('myForm').addEventListener('submit', function (e) {
+    function send(e) {
         e.preventDefault();
 
         const submit = document.getElementById('btnSubmit');
@@ -503,27 +569,55 @@
 
         xhr.addEventListener('load', function () {
             if (xhr.status >= 200 && xhr.status < 300) {
-                alert('Форма успешно отправлена!');
+                showAlert('Форма успешно отправлена!', 'alert-secondary');
                 document.getElementById('myForm').reset();
                 filesArray = [];
                 filePreview.innerHTML = '';
             } else {
-                alert('Ошибка при отправке формы: ' + xhr.statusText);
+                showAlert('Ошибка при отправке формы: ' + xhr.statusText, 'alert-danger');
             }
             progressContainer.style.display = 'none';
             submit.style.display = 'block'
         });
 
         xhr.addEventListener('error', function () {
-            alert('Произошла ошибка соединения');
+            showAlert('Ошибка соединения', 'alert-danger')
             progressContainer.style.display = 'none';
             submit.style.display = 'block'
         });
 
         xhr.open('POST', 'http://localhost:8080/orders', true);
         xhr.send(formData);
-    });
+    }
+
+    function showAlert(text, className) {
+        const alertElement = document.getElementById('customAlert');
+        alertElement.classList.add(className)
+        alertElement.classList.remove('d-none');
+        document.getElementById('alert-text').innerText = text;
+        setTimeout(function () {
+            closeAlert(alertElement);
+        }, 5000);
+    }
+
+    // Закрытие alert с анимацией
+    function closeAlert(alertElement) {
+        alertElement.classList.add('fade-out'); // Добавляем анимацию исчезновения
+
+        // Убираем alert из DOM после завершения анимации
+        setTimeout(function () {
+            alertElement.classList.add('d-none'); // Скрываем элемент
+            alertElement.classList.remove('fade-out'); // Убираем анимацию
+        }, 500); // 500 мс = время анимации
+    }
+
+
+    function closeBtnAlert() {
+        const alertElement = document.getElementById('customAlert');
+        closeAlert(alertElement); // Плавное закрытие
+    }
 </script>
+
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
