@@ -484,6 +484,12 @@
         delimiter: '-', // Разделитель
         prefix: '+375', // Префикс для номера
         blocks: [4, 2, 3, 2, 2], // Формат: +375 (XX) XXX-XX-XX
+        onValueChanged: function (e) {
+            // Проверка на полноту номера
+            if (e.target.rawValue.length === 13) { // 9 цифр без префикса
+                phoneInput.classList.remove('is-invalid');
+            }
+        }
     });
 
 
