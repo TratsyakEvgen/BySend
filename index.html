@@ -3774,12 +3774,12 @@
             display: inline-block;
             padding: 10px 20px;
             font-size: 16px;
-            color: white;
+            color: #fff;
             background-color: #4f4e4e;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color .3s ease
         }
 
         .copyright-text {
@@ -3797,12 +3797,11 @@
             border-bottom: 2px solid #4f4e4e
         }
 
-
         .slipway-background {
             background-image: url(images/slipway.svg);
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 80%;
+            background-size: 80%
         }
 
         .logo-max {
@@ -3816,22 +3815,20 @@
         }
 
         .progress-bar-color {
-            background-color: #4f4e4e;
+            background-color: #4f4e4e
         }
 
-        /* Анимация для плавного исчезновения */
         @keyframes fadeOut {
             from {
-                opacity: 1;
+                opacity: 1
             }
             to {
-                opacity: 0;
+                opacity: 0
             }
         }
 
-        /* Применяем анимацию к alert */
         .alert.fade-out {
-            animation: fadeOut 0.5s ease forwards; /* Плавное исчезновение за 0.5 секунды */
+            animation: fadeOut .5s ease forwards
         }
 
         .loader {
@@ -3840,38 +3837,25 @@
             border-radius: 50%;
             width: 120px;
             height: 120px;
-            animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite
         }
 
         @keyframes spin {
             0% {
-                transform: rotate(0deg);
+                transform: rotate(0)
             }
             100% {
-                transform: rotate(360deg);
+                transform: rotate(360deg)
             }
         }
 
         .form-control:focus {
             border-color: #4f4e4e;
-            box-shadow: inset 0 1px 1px #4f4e4e, 0 0 8px #4f4e4e;
+            box-shadow: inset 0 1px 1px #4f4e4e, 0 0 8px #4f4e4e
         }
 
         .invalid-feedback {
-            color: #4f4e4e; /* Серый цвет, как в Bootstrap для текста */
-        }
-
-
-        /* Переопределяем цвет для is-invalid */
-        .form-control.is-invalid {
-            border-color: #4f4e4e;
-        !important; /* Серый цвет для обводки */
-        }
-
-        /* Переопределяем цвет для фокуса is-invalid */
-        .is-invalid:focus {
-            border-color: #4f4e4e !important; /* Серый цвет для обводки при фокусе */
-            box-shadow: inset 0 1px 1px #4f4e4e, 0 0 8px #4f4e4e !important; /* Серый цвет тени */
+            color: #4f4e4e
         }
     </style>
 </head>
