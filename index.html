@@ -423,8 +423,8 @@
     </div>
 </footer>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.inputmask.min.js"></script>
+<script src="js/cleave.min.js"></script>
+<script src="js/cleave-phone.by.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
@@ -461,6 +461,7 @@
 <script>
     // Константы для элементов DOM
     const phoneInput = document.getElementById('phone');
+    const message = document.getElementById('message');
     const myForm = document.getElementById('myForm');
     const fileInput = document.getElementById('fileInput');
     const filePreview = document.getElementById('filePreview');
@@ -473,27 +474,29 @@
     let filesArray = []; // Массив для хранения выбранных файлов
 
     // Инициализация маски для телефона
-    if (phoneInput) {
-        Inputmask({
-            mask: "+375 (99) 999-99-99",
-            placeholder: "+375 (XX) XXX-XX-XX",
-            clearMaskOnLostFocus: false,
-            onincomplete: function () {
-                phoneInput.classList.add('is-invalid'); // Показываем ошибку, если номер неполный
-            },
-            oncomplete: function () {
-                phoneInput.classList.remove('is-invalid'); // Убираем ошибку, если номер полный
-            }
-        }).mask(phoneInput);
-    }
+    new Cleave(phoneInput, {
+        phone: true,
+        phoneRegionCode: 'BY', // Указываем код региона (Беларусь)
+        delimiter: '-', // Разделитель
+        prefix: '+375', // Префикс для номера
+        blocks: [4, 2, 3, 2, 2], // Формат: +375 (XX) XXX-XX-XX
+    });
+
 
     // Валидация формы
     if (myForm) {
         myForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            if (!phoneInput.inputmask.isComplete()) {
+            // Проверка на полноту номера
+            if (phoneInput && phoneInput.value.replace(/\D/g, '').length !== 12) { // 12 цифр с префиксом
                 phoneInput.classList.add('is-invalid'); // Показываем ошибку
+                phoneInput.scrollIntoView();
+                return;
+            }
+
+            if (message.value.length === 0 && filesArray.length === 0){
+                showAlert('Добавьте описание или файлы', 'alert-danger');
                 return;
             }
 
